@@ -13,7 +13,9 @@ interface IProps {
     toggleDrawer: () => void;
 }
 
+
 type FormValues = {
+    id: string;
     name: string;
     lastName: string;
     phone: string;
@@ -24,7 +26,7 @@ type FormValues = {
     zip: string;
 };
 
-function InputForm(props: IProps) {
+const AddInputForm = (props: IProps) => {
     const {
         register,
         handleSubmit,
@@ -34,7 +36,8 @@ function InputForm(props: IProps) {
         reValidateMode: 'onBlur',
         resolver: yupResolver(clientValidationSchema)
     });
-    const onSubmit = handleSubmit((data) => {
+
+    const onSave = handleSubmit((data) => {
         const newClient = {
             id: uuidv4(),
             name: data.name,
@@ -59,7 +62,7 @@ function InputForm(props: IProps) {
     return (
         <div className="App">
             <h1>Add New Client</h1>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSave}>
                 <TextField
                     required
                     id="outlined-required"
@@ -146,8 +149,12 @@ function InputForm(props: IProps) {
     );
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
-    addNewClient: (newClient: any) => dispatch({type: 'CREATE', payload: newClient})
-})
 
-export default connect(null, mapDispatchToProps)(InputForm)
+
+const mapDispatchToProps = (dispatch: any) => {
+    return ({
+        addNewClient: (newClient: any) => dispatch({type: 'CREATE', payload: newClient}),
+    });
+}
+
+export default connect(null, mapDispatchToProps)(AddInputForm);

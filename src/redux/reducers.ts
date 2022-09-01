@@ -7,10 +7,10 @@ const initialState = {
             phone: '852-887-6787',
             address:
                 {
-                    streetName: '23 Second St,',
-                    apartment: '#89,',
-                    town: 'North Belerica,',
-                    usState: 'MA,',
+                    streetName: '23 Second St',
+                    apartment: '#89',
+                    town: 'North Belerica',
+                    usState: 'MA',
                     zip: '01755'
                 }
         },
@@ -21,10 +21,10 @@ const initialState = {
             phone: '456-887-1111',
             address:
                 {
-                    streetName: '72 Main St,',
-                    apartment: '#9,',
-                    town: 'Reading,',
-                    state: 'MA,',
+                    streetName: '72 Main St',
+                    apartment: '#9',
+                    town: 'Reading',
+                    state: 'MA',
                     zip: '01940'
                 }
         }
@@ -82,10 +82,16 @@ function reducers(state = initialState, action: any) {
                 ...state,
                 clients: [...state.clients, action.payload]
             };
+        case 'EDIT':
+            const newClients = state.clients.map((el) => el.id === action.payload.id ? action.payload : el)
+            return {
+                ...state,
+                clients: [...newClients]
+            };
         default:
             return state;
     }
-
+    console.log(state.clients)
 }
 
 export default reducers;

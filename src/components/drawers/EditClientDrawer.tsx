@@ -1,27 +1,28 @@
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import InputForm from "./InputForm";
+import EditClientInputForm from "./EditClientInputForm";
 
-export default function TemporaryDrawer() {
+
+export default function EditClientDrawer() {
     const [state, setState] = React.useState(false);
 
-    const toggleDrawer = () => {
+    const toggleDrawer1 = () => {
         setState(!state);
     };
 
     return (
         <div>
-
             <React.Fragment key={"right"}>
-                <Button onClick={toggleDrawer}>ADD NEW CLIENT</Button>
+                <Button variant="contained" color="secondary" onClick={toggleDrawer1}>Edit Client info</Button>
                 <Drawer
                     anchor={"right"}  // вот эта штука отвечает за сторону, из которой выплывает drawer
                     open={state}  // эта штука открывает/закрывает модалку
-                    onClose={toggleDrawer}
+                    onClose={toggleDrawer1}
                 >
 
-                    <InputForm toggleDrawer={toggleDrawer}/>
+                    <EditClientInputForm toggleDrawer1={toggleDrawer1}/>
+
 
                 </Drawer>
             </React.Fragment>

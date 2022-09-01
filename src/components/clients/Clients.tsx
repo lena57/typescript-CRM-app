@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {IClient, IClients} from "../../interfaces/Interfaces";
 import Client from "./Client";
-import TemporaryDrawer from "../drawers/TemporaryDrawer";
+import AddClientDrawer from "../drawers/AddClientDrawer";
 
 interface IState{
     clients: IClients;
@@ -13,14 +13,12 @@ interface IProps{
 }
 
 const Clients = (props: IProps) => {
-
     let clientOrder = 1;
-
     return (
         <div>
             <h2>Clients</h2>
 
-            <TemporaryDrawer/>
+            <AddClientDrawer/>
 
             <table className="table">
                 <thead>
