@@ -4,16 +4,20 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import TextField from "@mui/material/TextField";
 import {clientValidationSchema} from "../../utils/Validation";
 import {connect} from "react-redux";
-import {IClient, IAddress} from "../../interfaces/Interfaces";
+import {IClient, IClients} from "../../interfaces/Interfaces";
 
 interface IProps {
     client: IClient;
-    address: IAddress;
     editClient: (updatedClient: IClient) => void;
     toggleDrawer1: () => void;
 }
 
+// interface IState {
+//     client: IClient;
+// }
+
 type FormValues = {
+    id: string;
     name: string;
     lastName: string;
     phone: string;
@@ -34,6 +38,7 @@ const EditClientInputForm = (props: IProps) => {
         reValidateMode: 'onBlur',
         resolver: yupResolver(clientValidationSchema)
     });
+    console.log(props)
 
     const onSubmit = handleSubmit((data) => {
         const updatedClient = {...props.client,
@@ -64,10 +69,11 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Name"
-                    defaultValue=""
+                   defaultValue=''
                     {...register("name")}
                     error={!!errors.name}
                     helperText={errors.name?.message}
+
                 />
 
                 <TextField
@@ -146,11 +152,13 @@ const EditClientInputForm = (props: IProps) => {
     );
 }
 
-
+// const mapStateToProps = (state: IState) => {
+//     client: state.client;
+// }
 
 const mapDispatchToProps = (dispatch: any) => {
     return ({
-        editClient: (client: any) => dispatch({type: 'EDIT', payload: client}),
+        editClient: (updatedClient: IClient) => dispatch({type: 'EDIT', payload: updatedClient}),
     });
 }
 

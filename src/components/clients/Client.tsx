@@ -1,6 +1,5 @@
 import React from 'react';
 import {IClient} from "../../interfaces/Interfaces";
-import Button from "@mui/material/Button";
 import EditClientDrawer from "../drawers/EditClientDrawer";
 
 interface IProps{
@@ -21,7 +20,7 @@ const Client = (props: IProps) => {
                     props.client.address.town + ', ' + props.client.address.usState + ', ' +
                     props.client.address.zip}</td>
 
-                <EditClientDrawer/>
+                <EditClientDrawer client={props.client}/>
             </tr>
 
     );

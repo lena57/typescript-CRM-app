@@ -13,7 +13,6 @@ interface IProps {
     toggleDrawer: () => void;
 }
 
-
 type FormValues = {
     id: string;
     name: string;
@@ -52,7 +51,6 @@ const AddInputForm = (props: IProps) => {
                     zip: data.zip
                 }
         }
-
 
         props.addNewClient(newClient);
         props.toggleDrawer();

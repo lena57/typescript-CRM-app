@@ -83,7 +83,7 @@ function reducers(state = initialState, action: any) {
                 clients: [...state.clients, action.payload]
             };
         case 'EDIT':
-            const newClients = state.clients.map((el) => el.id === action.payload.id ? action.payload : el)
+            const newClients = state.clients.map(el => el.id === action.payload.id ? action.payload : el)
             return {
                 ...state,
                 clients: [...newClients]
