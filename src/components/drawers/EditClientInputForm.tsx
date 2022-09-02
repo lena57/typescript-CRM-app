@@ -4,17 +4,14 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import TextField from "@mui/material/TextField";
 import {clientValidationSchema} from "../../utils/Validation";
 import {connect} from "react-redux";
-import {IClient, IClients} from "../../interfaces/Interfaces";
+import {IClient} from "../../interfaces/Interfaces";
+import Button from "@mui/material/Button";
 
 interface IProps {
     client: IClient;
     editClient: (updatedClient: IClient) => void;
     toggleDrawer1: () => void;
 }
-
-// interface IState {
-//     client: IClient;
-// }
 
 type FormValues = {
     id: string;
@@ -34,6 +31,17 @@ const EditClientInputForm = (props: IProps) => {
         handleSubmit,
         formState: {errors}
     } = useForm<FormValues>({
+        defaultValues: {
+            id: props.client.id,
+            name: props.client.name,
+            lastName: props.client.lastName,
+            phone: props.client.phone,
+            streetName: props.client.address.streetName,
+            apartment: props.client.address.apartment,
+            town: props.client.address.town,
+            usState: props.client.address.usState,
+            zip: props.client.address.zip,
+        },
         mode: 'onBlur',
         reValidateMode: 'onBlur',
         resolver: yupResolver(clientValidationSchema)
@@ -69,7 +77,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Name"
-                   defaultValue=''
                     {...register("name")}
                     error={!!errors.name}
                     helperText={errors.name?.message}
@@ -80,7 +87,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Last Name"
-                    defaultValue=""
                     {...register("lastName")}
                     error={!!errors.lastName}
                     helperText={errors.lastName?.message}
@@ -90,7 +96,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Phone"
-                    defaultValue=""
                     {...register("phone")}
                     error={!!errors.phone}
                     helperText={errors.phone?.message}
@@ -100,7 +105,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Street Name"
-                    defaultValue=""
                     {...register("streetName")}
                     error={!!errors.streetName}
                     helperText={errors.streetName?.message}
@@ -110,7 +114,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Apartment"
-                    defaultValue=""
                     {...register("apartment")}
                     error={!!errors.apartment}
                     helperText={errors.apartment?.message}
@@ -120,7 +123,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Town/City"
-                    defaultValue=""
                     {...register("town")}
                     error={!!errors.town}
                     helperText={errors.town?.message}
@@ -130,7 +132,6 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="State"
-                    defaultValue=""
                     {...register("usState")}
                     error={!!errors.usState}
                     helperText={errors.usState?.message}
@@ -140,21 +141,17 @@ const EditClientInputForm = (props: IProps) => {
                     required
                     id="outlined-required"
                     label="Zip"
-                    defaultValue=""
                     {...register("zip")}
                     error={!!errors.zip}
                     helperText={errors.zip?.message}
                 />
 
                 <input type="submit"/>
+                <Button> Cancel </Button>
             </form>
         </div>
     );
 }
-
-// const mapStateToProps = (state: IState) => {
-//     client: state.client;
-// }
 
 const mapDispatchToProps = (dispatch: any) => {
     return ({
