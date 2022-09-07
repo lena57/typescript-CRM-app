@@ -7,6 +7,7 @@ import {clientValidationSchema} from "../../utils/Validation";
 import {v4 as uuidv4} from 'uuid';
 import {connect} from "react-redux";
 import {IClient} from "../../interfaces/Interfaces";
+import Button from "@mui/material/Button";
 
 interface IProps {
     addNewClient: (newClient: IClient) => void;
@@ -61,92 +62,117 @@ const AddInputForm = (props: IProps) => {
         <div className="App">
             <h1>Add New Client</h1>
             <form onSubmit={onSave}>
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Name"
-                    defaultValue=""
-                    {...register("name")}
-                    error={!!errors.name}
-                    helperText={errors.name?.message}
-                />
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Name"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("name")}
+                        error={!!errors.name}
+                        helperText={errors.name?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Last Name"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("lastName")}
+                        error={!!errors.lastName}
+                        helperText={errors.lastName?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Phone"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("phone")}
+                        error={!!errors.phone}
+                        helperText={errors.phone?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Street Name"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("streetName")}
+                        error={!!errors.streetName}
+                        helperText={errors.streetName?.message}
+                    />
 
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Last Name"
-                    defaultValue=""
-                    {...register("lastName")}
-                    error={!!errors.lastName}
-                    helperText={errors.lastName?.message}
-                />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Apartment"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("apartment")}
+                        error={!!errors.apartment}
+                        helperText={errors.apartment?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Town/City"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("town")}
+                        error={!!errors.town}
+                        helperText={errors.town?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="State"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("usState")}
+                        error={!!errors.usState}
+                        helperText={errors.usState?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Zip"
+                        color="success" focused
+                        defaultValue=""
+                        {...register("zip")}
+                        error={!!errors.zip}
+                        helperText={errors.zip?.message}
+                    />
+                </div>
 
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Phone"
-                    defaultValue=""
-                    {...register("phone")}
-                    error={!!errors.phone}
-                    helperText={errors.phone?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Street Name"
-                    defaultValue=""
-                    {...register("streetName")}
-                    error={!!errors.streetName}
-                    helperText={errors.streetName?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Apartment"
-                    defaultValue=""
-                    {...register("apartment")}
-                    error={!!errors.apartment}
-                    helperText={errors.apartment?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Town/City"
-                    defaultValue=""
-                    {...register("town")}
-                    error={!!errors.town}
-                    helperText={errors.town?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="State"
-                    defaultValue=""
-                    {...register("usState")}
-                    error={!!errors.usState}
-                    helperText={errors.usState?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Zip"
-                    defaultValue=""
-                    {...register("zip")}
-                    error={!!errors.zip}
-                    helperText={errors.zip?.message}
-                />
-
-                <input type="submit"/>
+                <Button variant="contained" color="success" type="submit">Save</Button>
+                <Button variant="contained" color="error" onClick={props.toggleDrawer}> Cancel </Button>
             </form>
         </div>
     );
 }
-
 
 
 const mapDispatchToProps = (dispatch: any) => {

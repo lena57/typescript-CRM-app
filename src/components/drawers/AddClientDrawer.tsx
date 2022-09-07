@@ -13,7 +13,7 @@ export default function AddClientDrawer() {
     return (
         <div>
             <React.Fragment key={"right"}>
-                <Button variant="contained" color="success" onClick={toggleDrawer}>ADD NEW CLIENT</Button>
+                <Button variant="contained" color="success" onClick={toggleDrawer}>Add New Client</Button>
                 <Drawer
                     anchor={"right"}  // вот эта штука отвечает за сторону, из которой выплывает drawer
                     open={state}  // эта штука открывает/закрывает модалку

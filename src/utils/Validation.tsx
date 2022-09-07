@@ -18,8 +18,11 @@ export const clientValidationSchema = yup.object().shape({
     //     .oneOf([yup.ref('address'), null], 'Confirm Password does not match'),
     // city: yup.string()
     //     .oneOf([yup.ref('city'), null], 'city does not match'),
-    // state: yup.string()
-    //     .oneOf([yup.ref('state'), null], 'state does not match'),
-    // zip: yup.string()
-    //     .oneOf([yup.ref('zip'), null], 'Confirm Password does not match'),
+    usState: yup.string()
+        .min(2, 'State must be 2 characters')
+        .max(2, 'State must be 2 characters'),
+    zip: yup.string()
+        .min(5, 'Zip must be 5 characters')
+        .max(5, 'Zip must be 5 characters'),
+
 });

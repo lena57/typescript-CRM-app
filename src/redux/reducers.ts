@@ -4,7 +4,7 @@ const initialState = {
             id: '56',
             name: 'Sasha',
             lastName: 'Ningya',
-            phone: '852-887-6787',
+            phone: '8528876787',
             address:
                 {
                     streetName: '23 Second St',
@@ -18,7 +18,7 @@ const initialState = {
             id: '5',
             name: 'Alexey',
             lastName: 'Popov',
-            phone: '456-887-1111',
+            phone: '4568871111',
             address:
                 {
                     streetName: '72 Main St',

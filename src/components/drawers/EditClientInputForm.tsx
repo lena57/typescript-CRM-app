@@ -49,7 +49,8 @@ const EditClientInputForm = (props: IProps) => {
     console.log(props)
 
     const onSubmit = handleSubmit((data) => {
-        const updatedClient = {...props.client,
+        const updatedClient = {
+            ...props.client,
             name: data.name,
             lastName: data.lastName,
             phone: data.phone,
@@ -73,81 +74,104 @@ const EditClientInputForm = (props: IProps) => {
         <div className="App">
             <h1>Edit Client info</h1>
             <form onSubmit={onSubmit}>
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Name"
-                    {...register("name")}
-                    error={!!errors.name}
-                    helperText={errors.name?.message}
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Name"
+                        color="secondary" focused
+                        {...register("name")}
+                        error={!!errors.name}
+                        helperText={errors.name?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Last Name"
+                        color="secondary" focused
+                        {...register("lastName")}
+                        error={!!errors.lastName}
+                        helperText={errors.lastName?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Phone"
+                        color="secondary" focused
+                        {...register("phone")}
+                        error={!!errors.phone}
+                        helperText={errors.phone?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Street Name"
+                        color="secondary" focused
+                        {...register("streetName")}
+                        error={!!errors.streetName}
+                        helperText={errors.streetName?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Apartment"
+                        color="secondary" focused
+                        {...register("apartment")}
+                        error={!!errors.apartment}
+                        helperText={errors.apartment?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Town/City"
+                        color="secondary" focused
+                        {...register("town")}
+                        error={!!errors.town}
+                        helperText={errors.town?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="State"
+                        color="secondary" focused
+                        {...register("usState")}
+                        error={!!errors.usState}
+                        helperText={errors.usState?.message}
+                    />
+                </div>
+                <br/>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Zip"
+                        color="secondary" focused
+                        {...register("zip")}
+                        error={!!errors.zip}
+                        helperText={errors.zip?.message}
+                    />
+                </div>
 
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Last Name"
-                    {...register("lastName")}
-                    error={!!errors.lastName}
-                    helperText={errors.lastName?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Phone"
-                    {...register("phone")}
-                    error={!!errors.phone}
-                    helperText={errors.phone?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Street Name"
-                    {...register("streetName")}
-                    error={!!errors.streetName}
-                    helperText={errors.streetName?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Apartment"
-                    {...register("apartment")}
-                    error={!!errors.apartment}
-                    helperText={errors.apartment?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Town/City"
-                    {...register("town")}
-                    error={!!errors.town}
-                    helperText={errors.town?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="State"
-                    {...register("usState")}
-                    error={!!errors.usState}
-                    helperText={errors.usState?.message}
-                />
-
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Zip"
-                    {...register("zip")}
-                    error={!!errors.zip}
-                    helperText={errors.zip?.message}
-                />
-
-                <input type="submit"/>
-                <Button> Cancel </Button>
+                <Button variant="contained" color="primary" type="submit">Save</Button>
+                <Button variant="contained" color="error" onClick={props.toggleDrawer1}> Cancel </Button>
             </form>
         </div>
     );
