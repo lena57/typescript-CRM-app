@@ -10,7 +10,7 @@ import {IClient} from "../../interfaces/Interfaces";
 import Button from "@mui/material/Button";
 
 interface IProps {
-    addNewClient: (newClient: IClient) => void;
+    create: (newClient: IClient) => void;
     toggleDrawer: () => void;
 }
 
@@ -53,7 +53,7 @@ const AddInputForm = (props: IProps) => {
                 }
         }
 
-        props.addNewClient(newClient);
+        props.create(newClient);
         props.toggleDrawer();
         console.log(newClient);
     });
@@ -177,7 +177,8 @@ const AddInputForm = (props: IProps) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return ({
-        addNewClient: (newClient: any) => dispatch({type: 'CREATE', payload: newClient}),
+        create: (payload: IClient) => dispatch({ type: 'Client/create', payload }),
+        //addNewClient: (newClient: any) => dispatch({type: 'CREATE', payload: newClient}),
     });
 }
 
