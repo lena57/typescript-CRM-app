@@ -1,12 +1,10 @@
 import { notification } from 'antd';
 import axios from 'axios';
 import { get as getl } from 'lodash';
-// @ts-ignore
-import deleteAllCookies from '@/pages/utils/cookies';
-import { history } from '@umijs/max';
-//import { loadProgressBar } from 'axios-progress-bar';
+//import deleteAllCookies from '@/pages/utils/cookies';
+import 'axios-progress-bar/dist/nprogress.css'
 
-const server = 'http://localhost:5001';
+const server = process.env.API_SERVER;
 
 function getHeaders(type: string) {
     // const token = localStorage.getItem('token');
@@ -53,19 +51,18 @@ const failHandler = (res: any) => {
         });
     }
 
-    if (statusCode === 400 && messageTitle === 'Auth failed') {
-        deleteAllCookies();
-        history.push('/');
-        location.reload();
-    }
-
-    if (!silent && isFail && messageTitle) {
-        notification.error({
-            key: messageTitle,
-            message: messageTitle,
-            duration: 0,
-        });
-    }
+    // if (statusCode === 400 && messageTitle === 'Auth failed') {
+    //     //deleteAllCookies();
+    //     location.reload();
+    // }
+    //
+    // if (!silent && isFail && messageTitle) {
+    //     notification.error({
+    //         key: messageTitle,
+    //         message: messageTitle,
+    //         duration: 0,
+    //     });
+    // }
 };
 
 loadProgressBar();

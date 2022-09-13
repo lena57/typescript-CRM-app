@@ -77,17 +77,20 @@ const initialState = {
 
 function reducers(state = initialState, action: any) {
     switch (action.type) {
-        case 'CREATE':
+        case 'save':
             return {
                 ...state,
                 clients: [...state.clients, action.payload]
             };
-        case 'EDIT':
+        case 'update':
             const newClients = state.clients.map(el => el.id === action.payload.id ? action.payload : el)
             return {
                 ...state,
                 clients: [...newClients]
             };
+        case 'set':
+            return state;
+
         default:
             return state;
     }
@@ -95,3 +98,21 @@ function reducers(state = initialState, action: any) {
 }
 
 export default reducers;
+
+
+
+
+// const reducers = {
+//     save(state: any, { payload }: any) {
+//         return {
+//             ...state,
+//             ...payload,
+//         };
+//     },
+//
+//     set(state: any, { payload }: any) {
+//         return payload;
+//     },
+// };
+//
+// export default reducers;
